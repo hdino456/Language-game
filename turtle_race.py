@@ -22,4 +22,6 @@ for movememnt in range(100):
     laura.forward(randint(1,5))
     rick.forward(randint(1,5))
     
+
+    
 input("Press Enter to close")
