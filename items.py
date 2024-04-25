@@ -6,6 +6,6 @@ class Item:
         self.description = item_description
     
     def get_description(self):
-        print(f"{self.name}, {self.description}")
+        return f"{self.name}, {self.description}"
         
     pass

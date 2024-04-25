@@ -4,6 +4,7 @@ class Character():
         self.name = char_name
         self.description = char_description
         self.conversation = None
+        self.response = None
 
     # Describe this character
     def describe(self):
@@ -19,6 +20,12 @@ class Character():
             print("[" + self.name + " says]: " + self.conversation)
         else:
             print(self.name + " doesn't want to talk to you")
+            
+    def set_response(self,response):
+        self.response = response
+        
+    def get_response(self):
+        return self.response
 
     # Fight with this character
     def fight(self, combat_item):

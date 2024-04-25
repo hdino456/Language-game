@@ -1,5 +1,6 @@
 from room import Room
 from items import Item
+from character import Enemy
 
 kitchen = Room("Kitchen")
 ballroom = Room("Ballroom")
@@ -18,16 +19,42 @@ dhl.link_room(kitchen,"North")
 dhl.link_room(ballroom,"West")
 ballroom.link_room(dhl,"East")
 
+greg = Enemy("Greg", "Daft cunt")
+greg.set_conversation("Oi! What ya sayin fam, wanna get foucking shanked?")
+greg.set_weakness("Bitch slap")
+
+dhl.set_character(greg)
+
 current_room = kitchen
 
-
+print("\n")
+current_room.get_description()
 while True:
-    print("\n")
-    current_room.get_description()
     command = input("Which way do you want to go? ")
-    current_room = current_room.move(command)
-    if current_room is dhl:
-        print(f"On the dining table you can find {colt45.get_description()}")
+    if command in ["North", "South", "West", "East"]:
+        current_room = current_room.move(command)
+        current_room.get_description()
+        inhabitant = current_room.get_character() 
+        print(inhabitant)
+         
+        if current_room is dhl:
+            print(f"On the dining table you can find {colt45.get_description()}")
+            
+    if inhabitant is not None:
+        print(f"you have stummbled upon {inhabitant.name} a {inhabitant.description}")
+        engage = input(f"Engage with {inhabitant.name}? Y/N ")
+        if engage == "Y":
+            inhabitant.talk()
+            interaction = input("Talk, Fight or Walk away? " )
+            if interaction == "Fight":   
+                print("Fight with:")         
+                fight = greg.fight(input())
+                if fight is False:
+                    print("Game over!")
+                    break
+            elif interaction == "Talk":
+                inhabitant.talk()
+            else:
+                pass
     else:
-        pass 
-
+        pass
