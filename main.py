@@ -1,8 +1,6 @@
 from room import Room
 from items import Item
 
-
-
 kitchen = Room("Kitchen")
 ballroom = Room("Ballroom")
 dhl = Room("Dining Hall")
@@ -14,8 +12,6 @@ ballroom.set_description("A vast room with a shiny wooden floor; chandallere han
 dhl.set_description("A room with a long mahagony table with huge candlesticks in the middle of it.")
 
 colt45.set_descsription("an old gun with a brown wooden handle and datk stanes on the glossy metal.")
-
-
 
 kitchen.link_room(dhl,"South")
 dhl.link_room(kitchen,"North")
