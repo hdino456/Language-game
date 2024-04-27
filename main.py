@@ -34,27 +34,27 @@ while True:
     if command in ["North", "South", "West", "East"]:
         current_room = current_room.move(command)
         current_room.get_description()
-        inhabitant = current_room.get_character() 
-        print(inhabitant)
+        inhabitant = current_room.get_character()
          
         if current_room is dhl:
             print(f"On the dining table you can find {colt45.get_description()}")
+
             
-    if inhabitant is not None:
-        print(f"you have stummbled upon {inhabitant.name} a {inhabitant.description}")
-        engage = input(f"Engage with {inhabitant.name}? Y/N ")
-        if engage == "Y":
-            inhabitant.talk()
-            interaction = input("Talk, Fight or Walk away? " )
-            if interaction == "Fight":   
-                print("Fight with:")         
-                fight = greg.fight(input())
-                if fight is False:
-                    print("Game over!")
-                    break
-            elif interaction == "Talk":
+        if inhabitant is not None:
+            print(f"you have stummbled upon {inhabitant.name} a {inhabitant.description}")
+            engage = input(f"Engage with {inhabitant.name}? Y/N ")
+            if engage == "Y":
                 inhabitant.talk()
-            else:
-                pass
+                interaction = input("Talk, Fight or Walk away? " )
+                if interaction == "Fight":   
+                    print("Fight with:")         
+                    fight = greg.fight(input())
+                    if fight is False:
+                        print("Game over!")
+                        break
+                elif interaction == "Talk":
+                    inhabitant.talk()
+            
     else:
+        print("nope")
         pass
